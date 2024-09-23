@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{amsmath,enumitem,fullpage,graphicx,listings,float,sidecap,setspace,xcolor,wrapfig,booktabs,multirow,subcaption,array,minted,hyperref,xepersian,bidi,svg}
+%compile with xelatex+shell+escape
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\definecolor{lg}{HTML}{F4F3F3}
+\setlength{\fboxsep}{10pt}
+\usemintedstyle{borland}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=green,
+    filecolor=magenta,
+    urlcolor=cyan
+}
+\fontsize{14pt}{16pt}\selectfont
+\setlatintextfont{IRNazanin.ttf}
+\settextfont{IRNazanin.ttf}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{iust.png}
+    \end{figure}
+    \vspace{1cm}
+    {\scshape\Huge \textbf{دانشکده مهندسی کامپیوتر} \par}
+    \vspace{1cm}
+    {\huge\bfseries تمرین کروم  \par}
+    \vspace{1cm}
+    {\Large امنیت سیستم‌های کامپیوتری \par}
+    \vspace{1cm}
+	{\LARGE  مدرس: دکتر ابوالفضل دیانت\par}
+    \vspace{1cm}
+    {\LARGE  محمدحسین عباسپور، فرزان رحمانی \par}
+    \vspace{1cm}
+    {\LARGE شماره دانشجویی: ۹۹۵۲۱۴۳۳، ۹۹۵۲۱۲۷1 \par}
+    \vspace{1.22cm}
+    {\large نیم سال دوم \par}
+    {\large سال تحصیلی ۱۴۰۳-۱۴۰۲ \par}
+\end{titlepage}
+\newpage
+\doublespacing
+\singlespacing
+\newpage
+\setstretch{1.5}
+\section*{یک روش اثبات دانایی صفر به صورت غیرتعاملی که در زنجیره بلوکی استفاده میشود را تشریح کنید.} 
+\leavevmode 
+\\
+\section{مقدمه}
+\leavevmode
+\\
+اثبات دانایی صفر \lr{(Zero-Knowledge Proofs)} روش‌های رمزنگاری هستند که به یک طرف (اثبات‌کننده) اجازه می‌دهند تا به طرف دیگر (تأییدکننده) ثابت کند که مقداری را می‌داند، بدون اینکه هیچ اطلاعاتی در مورد آن مقدار فاش کند. اثبات دانایی صفر غیرتعاملی \lr{(Non-Interactive Zero-Knowledge Proofs)} نوعی هستند که تعامل بین اثبات‌کننده و تأییدکننده به حداقل می‌رسد، معمولاً فقط یک پیام از اثبات‌کننده به تأییدکننده.
+
+یکی از معروف‌ترین NIZKPs مورد استفاده در فناوری زنجیره بلوکی، \textbf{zk-SNARKs} \lr{(Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge)} است.
+
+\section{اجزای zk-SNARKs}
+\leavevmode
+\\
+اجزای اصلی zk-SNARKs عبارتند از:
+\begin{enumerate}
+    \item \textbf{زبان بیانی}: توصیف مسئله‌ای که باید اثبات شود.
+    \item \textbf{تنظیمات اولیه \lr{(Setup Phase)}}: تولید پارامترهای عمومی و خصوصی.
+    \item \textbf{ساخت اثبات \lr{(Proof Generation)}}: اثبات دانایی بدون افشای اطلاعات.
+    \item \textbf{تأیید اثبات \lr{(Proof Verification)}}: تأیید اعتبار اثبات بدون نیاز به تعامل.
+\end{enumerate}
+
+\section{توضیح فرآیند}
+\leavevmode
+\\
+فرآیند zk-SNARKs را می‌توان به مراحل زیر تقسیم کرد:
+
+\subsection{تنظیمات اولیه \lr{(Setup Phase)}}
+\begin{itemize}
+    \item یک الگوریتم راه‌اندازی وجود دارد که دو مجموعه پارامتر تولید می‌کند: پارامترهای عمومی و پارامترهای خصوصی.
+    \item پارامترهای عمومی به‌طور عمومی منتشر می‌شوند و برای ساخت و تأیید اثبات‌ها استفاده می‌شوند.
+    \item پارامترهای خصوصی مخفی نگه داشته می‌شوند و تنها برای اطمینان از امنیت پروتکل ضروری هستند.
+\end{itemize}
+
+\subsection{ساخت اثبات \lr{(Proof Generation)}}
+\begin{itemize}
+    \item اثبات‌کننده با استفاده از پارامترهای عمومی و دانش مخفی خود، یک اثبات غیرتعاملی تولید می‌کند.
+    \item این اثبات شامل یک رشته کوتاه از داده‌ها است که ثابت می‌کند اثبات‌کننده واقعاً دانش مخفی مورد نیاز را دارد، بدون اینکه آن دانش را فاش کند.
+\end{itemize}
+
+\subsection{تأیید اثبات \lr{(Proof Verification)}}
+\begin{itemize}
+    \item تأییدکننده با استفاده از پارامترهای عمومی و اثبات تولید شده، می‌تواند صحت اثبات را تأیید کند.
+    \item تأیید اثبات بسیار سریع است و نیازی به تعامل با اثبات‌کننده ندارد.
+\end{itemize}
+
+\section{کاربرد در زنجیره بلوکی}
+\begin{itemize}
+    \item \textbf{حفظ حریم خصوصی}: در ارزهای رمزنگاری شده مانند Zcash، از zk-SNARKs برای مخفی‌سازی جزئیات تراکنش‌ها (مانند فرستنده، گیرنده و مقدار تراکنش) استفاده می‌شود.
+    \item \textbf{کاهش بار محاسباتی}: تأیید تراکنش‌ها به‌صورت غیرتعاملی و سریع انجام می‌شود، که می‌تواند بار محاسباتی را کاهش دهد و به مقیاس‌پذیری شبکه کمک کند.
+\end{itemize}
+
+\section{مثال کاربردی}
+\leavevmode
+\\
+فرض کنید یک فرستنده می‌خواهد اثبات کند که یک مقدار خاص از ارز رمزنگاری شده را دارد و می‌تواند آن را به گیرنده منتقل کند، بدون اینکه جزئیات تراکنش (مانند مقدار دقیق) را فاش کند. با استفاده از zk-SNARKs، فرستنده می‌تواند اثبات کند که تراکنش معتبر است، در حالی که اطلاعات حساس مخفی باقی می‌مانند. گیرنده و سایر اعضای شبکه می‌توانند به راحتی و بدون نیاز به تعامل با فرستنده، صحت این اثبات را تأیید کنند.
+
+\section{نتیجه‌گیری}
+\leavevmode
+\\
+zk-SNARKs به عنوان یک ابزار قدرتمند در زنجیره بلوکی برای ایجاد تراکنش‌های امن و خصوصی به‌کار گرفته می‌شوند، و به افزایش اعتماد و کارایی در سیستم‌های غیرمتمرکز کمک می‌کنند.
+
+\end{document}

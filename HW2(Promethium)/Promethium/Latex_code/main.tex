@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{gensymb}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{filecontents}
+\usepackage{verbatim}
+\usepackage{eurosym}
+\usepackage[export]{adjustbox}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{xepersian}
+\settextfont{Niloofar.ttf}
+\renewcommand{\baselinestretch}{1.5}
+
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[overlay,remember picture]
+\draw[line width=4pt]
+    ($ (current page.north west) + (1cm,-1cm) $)
+    rectangle
+    ($ (current page.south east) + (-1cm,1cm) $);
+\draw[line width=1.5pt]
+    ($ (current page.north west) + (1.2cm,-1.2cm) $)
+    rectangle
+    ($ (current page.south east) + (-1.2cm,1.2cm) $);
+\end{tikzpicture}
+}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center 
+
+\textsc{\LARGE به نام خدا}\\[1cm] 
+
+\includegraphics[width=0.4\textwidth]{Images/IUSTLogo.png}\\[1cm] 
+
+\textsc{\Large درس امنیت سیستم های کامپیوتری  }
+
+\HRule \\[0.4cm]
+{ \huge \bfseries تمرین سری دوم فصل دو(پرومتیم) }\\ 
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{center} \large
+\emph{مدرس درس: } \\
+جناب آقای دکتر دیانت \\[1cm]
+\emph{تهیه شده توسط: }\\
+فرزان رحمانی، \\
+محمدحسین عباسپور
+\end{center}
+\end{minipage}\\[1cm]
+{\large تاریخ ارسال: 1403/01/30}\\[2cm]
+\vfill 
+
+\end{titlepage}
+\input{Questions/Q1}
+\input{Questions/Q2}
+\end{document}
